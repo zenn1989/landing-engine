@@ -3,17 +3,12 @@
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title><?= $title ?? 'Empty page' ?></title>
-
-    <!-- Bootstrap core CSS -->
+    <meta name="description" content="<?= env('SEO_OP_DESC') ?? '' ?>">
+    <meta name="keywords" content="<?= env('SEO_OP_KEYWORDS') ?? '' ?>">
+    <title><?= env('SEO_OP_TITLE') ?? 'Empty page' ?></title>
     <link href="assets/npm/node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="assets/npm/node_modules/@fortawesome/fontawesome-free/css/all.css" rel="stylesheet">
     <link href="assets/css/theme.css" rel="stylesheet">

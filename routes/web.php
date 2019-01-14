@@ -1,12 +1,20 @@
 <?php
 
 /** @var \Laravel\Lumen\Routing\Router $router */
-
-$router->get('/', function () use ($router) {
-    return view()->render('front/one_page', [
-        'config' => config('seo')
-    ]);
-});
+if (env('APP_ONEPAGE')) {
+    $router->get('/', function () use ($router) {
+        return view()->render('front/one_page');
+    });
+} else {
+    try {
+        $pages = \Illuminate\Support\Facades\DB::select('SELECT * FROM pages');
+        foreach ($pages as $page) {
+            $router->get($page->route, function () use ($router, $page) {
+                return view()->render($page->tpl, $page);
+            });
+        }
+    } catch (\Exception $e) {}
+}
 
 $router->get('/lol/test', function() use ($router){
     return ['hey' => 'test'];

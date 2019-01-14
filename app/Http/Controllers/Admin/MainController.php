@@ -4,22 +4,23 @@ namespace App\Http\Controllers\Admin;
 
 
 use App\Http\Controllers\Controller;
+use App\User;
 use \Ffcms\Templex\Engine;
 
 /**
  * Class MainController
  * @package App\Http\Controllers\Admin
+ * @author https://github.com/ajaxorg/ace
  */
 class MainController extends Controller
 {
 
     /**
-     * @param Engine $tpl
      * @return string
      * @throws \Throwable
      */
     public function index(): ?string
     {
-        return $this->view->render('admin/index');
+        return view()->render('admin/index');
     }
 }
