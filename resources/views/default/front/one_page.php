@@ -29,10 +29,10 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" href="#download">О компании</a>
+                    <a class="nav-link js-scroll-trigger" href="#about">О компании</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" href="#features">Услуги</a>
+                    <a class="nav-link js-scroll-trigger" href="#prices">Услуги</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link js-scroll-trigger" href="#contact">Контакты</a>
@@ -48,7 +48,8 @@
             <div class="col-lg-8 my-auto">
                 <div class="header-content mx-auto">
                     <h1 class="mb-5">Моя компания &copy; - современная компания предоставляющая услуги накачки резиновых уток! Закажите резиновую утку уже сейчас! Резиновые утки любых размеров для вас!</h1>
-                    <a href="#download" class="btn btn-outline btn-xl js-scroll-trigger">Каталог уток</a>
+                    <a href="#prices" class="btn btn-outline btn-xl js-scroll-trigger">Каталог услуг</a>
+                    <a href="#callback" class="btn btn-outline-light btn-xl js-scroll-trigger"><i class="fa fa-phone"></i> Позвоните мне</a>
                 </div>
             </div>
             <div class="col-lg-4 my-auto">
@@ -69,81 +70,54 @@
     </div>
 </header>
 
-<section class="download bg-primary text-center" id="download">
+<section class="about bg-primary text-center" id="about">
     <div class="container">
         <div class="row">
             <div class="col-md-8 mx-auto">
-                <h2 class="section-heading">Discover what all the buzz is about!</h2>
-                <p>Our app is available on any mobile device! Download now to get started!</p>
+                <h2 class="section-heading">Моя компания - накачка резиновых уточек</h2>
+                <p>Наша компания уже более 10 лет занимается накачкой резиновых уток на мировом рынке. За время нашей работы более тысячи клиентов остались довольны нашей работой!</p>
                 <div class="badges">
-                    <a class="badge-link" href="#"><img src="img/google-play-badge.svg" alt=""></a>
-                    <a class="badge-link" href="#"><img src="img/app-store-badge.svg" alt=""></a>
+                    <a class="badge-link" href="#"><img src="assets/img/company-process-image1.jpg" alt=""></a>
+                    <a class="badge-link" href="#"><img src="assets/img/company-process-image2.jpg" alt=""></a>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<section class="features" id="features">
+<section class="features" id="prices">
     <div class="container">
         <div class="section-heading text-center">
-            <h2>Unlimited Features, Unlimited Fun</h2>
-            <p class="text-muted">Check out what you can do with this app theme!</p>
+            <h2>Каталог услуг</h2>
+            <p class="text-muted">Ниже приведен список наших услуг и их стоимость, актуальный на <?= date('d.m.Y') ?>!</p>
             <hr>
         </div>
-        <div class="row">
-            <div class="col-lg-4 my-auto">
-                <div class="device-container">
-                    <div class="device-mockup iphone6_plus portrait white">
-                        <div class="device">
-                            <div class="screen">
-                                <!-- Demo image for screen mockup, you can put an image here, some HTML, an animation, video, or anything else! -->
-                                <img src="img/demo-screen-1.jpg" class="img-fluid" alt="">
-                            </div>
-                            <div class="button">
-                                <!-- You can hook the "home button" to some JavaScript events or just remove it -->
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-8 my-auto">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="feature-item">
-                                <i class="icon-screen-smartphone text-primary"></i>
-                                <h3>Device Mockups</h3>
-                                <p class="text-muted">Ready to use HTML/CSS device mockups, no Photoshop required!</p>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="feature-item">
-                                <i class="icon-camera text-primary"></i>
-                                <h3>Flexible Use</h3>
-                                <p class="text-muted">Put an image, video, animation, or anything else in the screen!</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="feature-item">
-                                <i class="icon-present text-primary"></i>
-                                <h3>Free to Use</h3>
-                                <p class="text-muted">As always, this theme is free to download and use for any purpose!</p>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="feature-item">
-                                <i class="icon-lock-open text-primary"></i>
-                                <h3>Open Source</h3>
-                                <p class="text-muted">Since this theme is MIT licensed, you can use it commercially!</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="table-responsive">
+            <?= $this->table(['class' => 'table table-striped table-hover'])
+                ->head([
+                    ['text' => 'Услуга'],
+                    ['text' => 'Стоимость']
+                ])->row([
+                    ['text' => 'Накачка одной резиновой утки малого размера'],
+                    ['text' => '<span class="badge badge-info">50руб</span>', 'html' => true]
+                ])->row([
+                    ['text' => 'Накачка одной резиновой утки среднего размера'],
+                    ['text' => '<span class="badge badge-success">100руб</span>', 'html' => true]
+                ])->row([
+                    ['text' => 'Накачка одной резиновой утки большого размера'],
+                    ['text' => '150руб']
+                ])->row([
+                    ['text' => 'Ремонт поврежденных участков резиновой утки'],
+                    ['text' => 'от 50руб']
+                ])->row([
+                    ['text' => 'Выезд к клиенту домой для оказания услуг по накачке уток'],
+                    ['text' => '200руб']
+                ])->row([
+                    ['text' => 'Выпить с клиентом чая'],
+                    ['text' => 'бесплатно']
+                ])->display() ?>
         </div>
+        <p class="text-muted">* Цены в каталоге услуг не являются публичным договором-офертой а лишь указывают на предварительную оценку стоимости услуг.</p>
     </div>
 </section>
 

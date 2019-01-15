@@ -20,7 +20,7 @@ class TemplexServiceProvider extends ServiceProvider
         $app = $this->app;
         // initialize templex engine
         $app->singleton('Ffcms\Templex\Engine', function() use ($app) {
-            $path = base_path() . DIRECTORY_SEPARATOR .  'resources' . DIRECTORY_SEPARATOR . 'views';
+            $path = base_path() . DIRECTORY_SEPARATOR .  'resources' . DIRECTORY_SEPARATOR . 'views' . DIRECTORY_SEPARATOR . env('APP_TEMPLATE');
 
             $templex = new Engine($path);
             $templex->loadDefaultExtensions();
