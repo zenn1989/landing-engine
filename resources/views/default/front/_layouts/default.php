@@ -152,7 +152,7 @@
     </div>
 </section>
 
-<section class="cta">
+<section class="contact">
     <div class="cta-content">
         <div class="container">
             <h2>Stop waiting.<br>Start building.</h2>
