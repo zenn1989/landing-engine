@@ -9,7 +9,7 @@
                 <div class="header-content mx-auto">
                     <h1 class="mb-5">Моя компания &copy; - современная компания предоставляющая услуги накачки резиновых уток! Закажите резиновую утку уже сейчас! Резиновые утки любых размеров для вас!</h1>
                     <a href="#prices" class="btn btn-outline btn-xl js-scroll-trigger">Каталог услуг</a>
-                    <a href="#callback" class="btn btn-outline-light btn-xl js-scroll-trigger"><i class="fa fa-phone"></i> Позвоните мне</a>
+                    <a href="#contact" class="btn btn-outline-light btn-xl js-scroll-trigger"><i class="fa fa-phone"></i> Позвоните мне</a>
                 </div>
             </div>
             <div class="col-lg-4 my-auto">

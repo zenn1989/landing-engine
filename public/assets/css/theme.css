@@ -367,7 +367,7 @@ section.contact ul.list-social li.social-google-plus a:hover {
   background-color: #d73925;
 }
 
-section.contact a {
+section.contact a:not(.btn) {
   color: #0d95e8;
 }
 
