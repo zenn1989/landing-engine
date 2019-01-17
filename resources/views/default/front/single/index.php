@@ -19,25 +19,27 @@
 <body id="page-top">
 
 <!-- navbar insertion from sections -->
-<?= $this->insert('front/onepage_sections/navbar-menu') ?>
+<?= $this->insert('front/single/sections/navbar-menu') ?>
 <!-- /navbar insertion from sections -->
 
 <!-- render main header -->
-<?= $this->insert('front/onepage_sections/mainhead') ?>
+<?= $this->insert('front/single/sections/mainhead') ?>
 <!-- /render main header -->
 
 <!-- render about section -->
-<?= $this->insert('front/onepage_sections/about') ?>
+<?= $this->insert('front/single/sections/about') ?>
 <!-- /render about section -->
 
 <!-- render prices section -->
-<?= $this->insert('front/onepage_sections/prices') ?>
+<?= $this->insert('front/single/sections/prices') ?>
 <!-- /render prices section -->
 
 <!-- render contact section -->
-<?= $this->insert('front/onepage_sections/contact') ?>
+<?= $this->insert('front/single/sections/contact') ?>
 <!-- /render contact section -->
 
+
+<?= $this->insert('front/single/sections/tests') ?>
 
 <footer>
     <div class="container">

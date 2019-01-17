@@ -3,7 +3,7 @@
 /** @var \Laravel\Lumen\Routing\Router $router */
 if (env('APP_ONEPAGE')) {
     $router->get('/', function () use ($router) {
-        return view()->render('front/one_page');
+        return view()->render('front/single/index');
     });
 } else {
     try {

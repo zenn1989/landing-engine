@@ -7,8 +7,7 @@ echo $this->bootstrap()->navbar(['class' => 'navbar navbar-expand-lg navbar-ligh
     ->menu('right', ['text' => 'Услуги', 'link' => ['#prices'], 'linkProperties' => ['class' => 'js-scroll-trigger']])
     ->menu('right', ['text' => 'Контакты', 'link' => ['#contact'], 'linkProperties' => ['class' => 'js-scroll-trigger']])
     ->menu('right', ['text' => 'Еще', 'dropdown' => [
-        ['text' => 'Vk.com', 'link' => ['#']],
-        ['text' => 'Twitter', 'link' => ['#']]
+        ['text' => 'Vk.com', 'link' => ['#lol-kek']],
+        ['text' => 'Twitter', 'link' => ['#cheburek']]
     ]])
     ->display();
-?>
