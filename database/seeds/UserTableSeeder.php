@@ -15,7 +15,8 @@ class UserTableSeeder extends Seeder
         DB::table('users')->insert([
             'email' => 'zenn@ffcms.org',
             'name' => 'Pyatinskiy M',
-            'password' => password_hash('admin', PASSWORD_DEFAULT)
+            'password' => password_hash('admin', PASSWORD_DEFAULT),
+            'is_admin' => true
         ]);
     }
 }

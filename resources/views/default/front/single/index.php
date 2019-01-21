@@ -9,9 +9,9 @@
     <meta name="description" content="<?= env('SEO_OP_DESC') ?? '' ?>">
     <meta name="keywords" content="<?= env('SEO_OP_KEYWORDS') ?? '' ?>">
     <title><?= env('SEO_OP_TITLE') ?? 'Empty page' ?></title>
-    <link href="assets/npm/node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="assets/npm/node_modules/@fortawesome/fontawesome-free/css/all.css" rel="stylesheet">
-    <link href="assets/css/theme.css" rel="stylesheet">
+    <link href="<?= url('/') ?>/assets/npm/node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="<?= url('/') ?>/assets/npm/node_modules/@fortawesome/fontawesome-free/css/all.css" rel="stylesheet">
+    <link href="<?= url('/') ?>/assets/css/theme.css" rel="stylesheet">
 
     <link href="https://fonts.googleapis.com/css?family=Noto+Sans|Roboto" rel="stylesheet">
 </head>
@@ -48,11 +48,11 @@
 </footer>
 
 <!-- Bootstrap core JavaScript -->
-<script src="assets/npm/node_modules/jquery/dist/jquery.min.js"></script>
-<script src="assets/npm/node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+<script src="<?= url('/') ?>/assets/npm/node_modules/jquery/dist/jquery.min.js"></script>
+<script src="<?= url('/') ?>/assets/npm/node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
 
 <!-- Custom scripts for this template -->
-<script src="assets/js/theme.js"></script>
+<script src="<?= url('/') ?>/assets/js/theme.js"></script>
 
 </body>
 </html>

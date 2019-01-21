@@ -10,19 +10,26 @@ if (env('APP_ONEPAGE')) {
         $pages = \Illuminate\Support\Facades\DB::select('SELECT * FROM pages');
         foreach ($pages as $page) {
             $router->get($page->route, function () use ($router, $page) {
-                return view()->render($page->tpl, $page);
+                return view()->render($page->tpl, [
+                    'page' => $page
+                ]);
             });
         }
     } catch (\Exception $e) {}
 }
 
-$router->get('/lol/test', function() use ($router){
-    return ['hey' => 'test'];
-});
+/** admin authorization */
+$router->get('/admin/login', [
+    'as' => 'login',
+    'uses' => 'Admin\LoginController@loginForm'
+]);
+$router->post('/admin/login', [
+    'uses' => 'Admin\LoginController@doLogin'
+]);
 
 
 // work around /admin/ query namespace in app\Http\Controller\Admin namespace
-$router->group(['namespace' => 'Admin', 'prefix' => 'admin'], function($app) use ($router) {
+$router->group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'auth'], function($app) use ($router) {
     /** @var \Laravel\Lumen\Routing\Router $app */
     $app->get('/', ['uses' => 'MainController@index']);
     $app->get('/index', ['uses' => 'MainController@index']);

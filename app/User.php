@@ -14,6 +14,7 @@ use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
  * @property int $id
  * @property string $email
  * @property string $password
+ * @property bool $is_admin
  */
 class User extends Model implements AuthenticatableContract, AuthorizableContract
 {

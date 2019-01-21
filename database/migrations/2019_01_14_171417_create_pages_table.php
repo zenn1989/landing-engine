@@ -13,12 +13,14 @@ class CreatePagesTable extends Migration
      */
     public function up()
     {
-        Schema::table('pages', function (Blueprint $table) {
+        Schema::create('pages', function (Blueprint $table) {
             $table->increments('id');
             $table->string('route', 1024)->unique();
-            $table->string('tpl', 128)->default('front/page');
-            $table->text('title');
+            $table->string('tpl', 128)->default('front/multiple/page');
             $table->mediumText('text');
+            $table->text('seo_title');
+            $table->text('seo_keywords');
+            $table->text('seo_description');
             $table->timestamps();
         });
     }

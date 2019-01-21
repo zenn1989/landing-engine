@@ -28,7 +28,6 @@ $app->withEloquent();
 
 // enable configuration usage
 $app->configure('app');
-
 /*
 |--------------------------------------------------------------------------
 | Register Container Bindings
@@ -50,6 +49,10 @@ $app->singleton(
     App\Console\Kernel::class
 );
 
+$app->singleton(Illuminate\Session\SessionManager::class, function () use ($app) {
+    return new Illuminate\Session\SessionManager($app);
+});
+
 /*
 |--------------------------------------------------------------------------
 | Register Middleware
@@ -65,17 +68,14 @@ $app->singleton(
 //     App\Http\Middleware\ExampleMiddleware::class
 // ]);
 
-// $app->routeMiddleware([
-//     'auth' => App\Http\Middleware\Authenticate::class,
-// ]);
-
-$app->middleware([
-    \Illuminate\Session\Middleware\StartSession::class,
+$app->routeMiddleware([
+    'auth' => App\Http\Middleware\Authenticate::class,
 ]);
 
-$app->bind(\Illuminate\Session\SessionManager::class, function () use ($app) {
-    return new \Illuminate\Session\SessionManager($app);
-});
+$app->middleware([
+    //other middlewares ...
+    Illuminate\Session\Middleware\StartSession::class,
+]);
 
 /*
 |--------------------------------------------------------------------------
@@ -89,10 +89,13 @@ $app->bind(\Illuminate\Session\SessionManager::class, function () use ($app) {
 */
 
 $app->register(App\Providers\TemplexServiceProvider::class);
-
 $app->register(App\Providers\AppServiceProvider::class);
+
 // $app->register(App\Providers\AuthServiceProvider::class);
 // $app->register(App\Providers\EventServiceProvider::class);
+
+$app->configure('session');
+$app->register(Illuminate\Session\SessionServiceProvider::class);
 
 /*
 |--------------------------------------------------------------------------
@@ -109,8 +112,7 @@ function view() {
     return Laravel\Lumen\Application::getInstance()->make('Ffcms\Templex\Engine');
 }
 
-$app->configure('session');
-$app->register(\Illuminate\Session\SessionServiceProvider::class);
+$app->register(Illuminate\Session\SessionServiceProvider::class);
 
 /*
 |--------------------------------------------------------------------------

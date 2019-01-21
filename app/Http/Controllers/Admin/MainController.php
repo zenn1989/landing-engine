@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Admin;
 
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 
 /**
  * Class MainController
@@ -20,18 +19,6 @@ class MainController extends Controller
      */
     public function index(): ?string
     {
-        // session demo
-        app('session')->put('name', 'test name');
-        $t = app('session')->get('name');
-        return view()->render('admin/login');
-    }
-
-    /**
-     * @return string|null
-     * @throws \Throwable
-     */
-    public function login(): ?string
-    {
-        return view()->render('admin/login');
+        return view()->render('admin/index');
     }
 }

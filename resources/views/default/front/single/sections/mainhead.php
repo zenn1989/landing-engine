@@ -17,7 +17,7 @@
                     <div class="device-mockup iphone6_plus portrait white">
                         <div class="device">
                             <div class="screen">
-                                <img src="assets/img/main-logo.png" class="img-fluid" alt="Логотип компании уток">
+                                <img src="<?= url('/') ?>/assets/img/main-logo.png" class="img-fluid" alt="Логотип компании уток">
                             </div>
                             <div class="button">
                                 <!-- You can hook the "home button" to some JavaScript events or just remove it -->

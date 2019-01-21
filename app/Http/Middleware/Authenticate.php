@@ -8,24 +8,6 @@ use Illuminate\Contracts\Auth\Factory as Auth;
 class Authenticate
 {
     /**
-     * The authentication guard factory instance.
-     *
-     * @var \Illuminate\Contracts\Auth\Factory
-     */
-    protected $auth;
-
-    /**
-     * Create a new middleware instance.
-     *
-     * @param  \Illuminate\Contracts\Auth\Factory  $auth
-     * @return void
-     */
-    public function __construct(Auth $auth)
-    {
-        $this->auth = $auth;
-    }
-
-    /**
      * Handle an incoming request.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -35,8 +17,9 @@ class Authenticate
      */
     public function handle($request, Closure $next, $guard = null)
     {
-        if ($this->auth->guard($guard)->guest()) {
-            return response('Unauthorized.', 401);
+        $id = $request->session()->get('id');
+        if (!$id || (int)$id < 1) {
+            return redirect()->route('login');
         }
 
         return $next($request);
