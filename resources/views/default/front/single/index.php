@@ -11,7 +11,7 @@
     <title><?= env('SEO_OP_TITLE') ?? 'Empty page' ?></title>
     <link href="<?= url('/') ?>/assets/npm/node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="<?= url('/') ?>/assets/npm/node_modules/@fortawesome/fontawesome-free/css/all.css" rel="stylesheet">
-    <link href="<?= url('/') ?>/assets/css/theme.css" rel="stylesheet">
+    <link href="<?= url('/') ?>/assets/css/single.css" rel="stylesheet">
 
     <link href="https://fonts.googleapis.com/css?family=Noto+Sans|Roboto" rel="stylesheet">
 </head>
@@ -37,9 +37,6 @@
 <!-- render contact section -->
 <?= $this->insert('front/single/sections/contact') ?>
 <!-- /render contact section -->
-
-
-<?= $this->insert('front/single/sections/tests') ?>
 
 <footer>
     <div class="container">
