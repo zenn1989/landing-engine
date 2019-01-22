@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 
 use App\Http\Controllers\Controller;
+use App\Model\FormAdminLogin;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -25,7 +26,11 @@ class LoginController extends Controller
             return redirect('/admin');
         }
 
-        return view()->render('admin/login');
+        $model = new FormAdminLogin();
+
+        return view()->render('admin/login', [
+            'model' => $model
+        ]);
     }
 
     /**
@@ -35,8 +40,10 @@ class LoginController extends Controller
      */
     public function doLogin(Request $request)
     {
-        $login = $request->post('email', null);
-        $pwd = $request->post('password', null);
+        $model = new FormAdminLogin();
+
+        $login = $request->input($model->getFormName() . '.email', null);
+        $pwd = $request->input($model->getFormName() . '.password', null);
 
         if (!$login || !$pwd || !is_string($login) || !is_string($pwd) || strlen($login) < 2 || strlen($pwd) < 5) {
             return redirect()->route('login');

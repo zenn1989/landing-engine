@@ -1,5 +1,6 @@
 <?php
 /** @var \Ffcms\Templex\Template\Template $this */
+/** @var \App\Model\FormAdminLogin $model */
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,17 +19,21 @@
             <div class="panel">
                 <h2>Admin Login</h2>
             </div>
-            <form id="Login" method="post" action="<?= url('/admin/login') ?>">
-                <div class="form-group">
-                    <input type="email" class="form-control" id="inputEmail" placeholder="Email" name="email">
-                </div>
 
-                <div class="form-group">
-                    <input type="password" class="form-control" id="inputPassword" placeholder="Password" name="password">
-                </div>
+            <?php $form = $this->form($model) ?>
+            <?= $form->start(false) ?>
 
-                <input type="submit" name="submit" class="btn btn-primary" value="Login" />
-            </form>
+            <div class="form-group">
+                <?= $form->field()->text('email', ['placeholder' => 'Email', 'class' => 'form-control']) ?>
+            </div>
+
+            <div class="form-group">
+                <?= $form->field()->password('password', ['placeholder' => 'Password', 'class' => 'form-control']) ?>
+            </div>
+
+            <?= $form->button()->submit('Login', ['class' => 'btn btn-primary']) ?>
+
+            <?= $form->stop() ?>
         </div>
     </div>
 </div>
