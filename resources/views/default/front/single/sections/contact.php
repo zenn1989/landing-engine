@@ -1,6 +1,7 @@
 <?php
 /** @var \Ffcms\Templex\Template\Template $this */
 ?>
+<script src='https://www.google.com/recaptcha/api.js'></script>
 <section class="contact" id="contact">
     <div class="cta-content">
         <div class="container">
@@ -8,21 +9,24 @@
             <div class="row">
                 <div class="col-md-6">
                     <p>Напишите ваш номер телефона и мы перезвоним вам в ближайшее время</p>
-                    <form>
-                        <div class="form-group row">
-                            <label for="inputName" class="col-md-3 col-form-label">Ваше имя?</label>
-                            <div class="col-md-9">
-                                <input type="text" class="form-control" id="inputName" placeholder="Иван">
-                            </div>
+                    <div class="form-group row">
+                        <label for="inputName" class="col-md-3 col-form-label">Ваше имя?</label>
+                        <div class="col-md-9">
+                            <input type="text" class="form-control" id="inputName" placeholder="Иван" required>
                         </div>
-                        <div class="form-group row">
-                            <label for="inputPhone" class="col-md-3 col-form-label">Телефон</label>
-                            <div class="col-md-9">
-                                <input type="text" class="form-control" id="inputPhone" placeholder="89181112233">
-                            </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputPhone" class="col-md-3 col-form-label">Телефон</label>
+                        <div class="col-md-9">
+                            <input type="text" class="form-control" id="inputPhone" placeholder="89181112233" required>
                         </div>
-                        <button id="callme" class="btn btn-primary"><i class="fa fa-phone"></i> Позвоните мне!</button>
-                    </form>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-9 offset-md-3">
+                            <div class="g-recaptcha" data-sitekey="<?= env('APP_RECATCHA_PUBLIC') ?>"></div>
+                        </div>
+                    </div>
+                    <button id="callme" class="btn btn-primary mt-2"><i class="fa fa-phone"></i> Позвоните мне!</button>
                 </div>
                 <div class="col-md-6">
                     <p>

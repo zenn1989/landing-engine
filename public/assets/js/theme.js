@@ -54,4 +54,34 @@
     // Collapse the navbar when page is scrolled
     $(window).scroll(navbarCollapse);
 
+    // process "backcalls" click
+    $('#callme').click(function(){
+        var name = $('#inputName').val();
+        var phone = $('#inputPhone').val();
+        var captchaValue = grecaptcha.getResponse();
+
+        if(name.length > 2 && phone.length > 5 && captchaValue.length > 0) {
+            $.ajax({
+                url: base_url + '/api/backcall',
+                data: {
+                    name: name,
+                    phone: phone,
+                    captcha: captchaValue
+                },
+                success: function(res){
+                    if (res.status !== 1) {
+                        alert("Произошла ошибка заполнения формы!");
+                    } else {
+                        alert('Ваш запрос успешно принят. В ближайшее время с вами свяжутся наши специалисты!');
+                        grecaptcha.reset();
+                        $('#inputPhone').val('');
+                        $('#inputName').val('');
+                    }
+                }
+            })
+        } else {
+            alert('Введены некоректные данные');
+        }
+    });
+
 })(jQuery); // End of use strict

@@ -14,6 +14,9 @@
     <link href="<?= url('/') ?>/assets/css/single.css" rel="stylesheet">
 
     <link href="https://fonts.googleapis.com/css?family=Noto+Sans|Roboto" rel="stylesheet">
+    <script>
+        var base_url = '<?= url('/') ?>';
+    </script>
 </head>
 
 <body id="page-top">

@@ -18,6 +18,11 @@ if (env('APP_ONEPAGE')) {
     } catch (\Exception $e) {}
 }
 
+/** add new backcall by ajax request */
+$router->get('/api/backcall', [
+    'uses' => 'Front\BackcallController@send'
+]);
+
 /** admin authorization */
 $router->get('/admin/login', [
     'as' => 'login',
@@ -33,6 +38,7 @@ $router->group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'au
     /** @var \Laravel\Lumen\Routing\Router $app */
     $app->get('/', ['uses' => 'MainController@index']);
     $app->get('/index', ['uses' => 'MainController@index']);
+    $app->get('/close/{id}', ['uses' => 'MainController@close']);
 
     $app->get('/lol/test/kek/', function(){
         return ['test'];
