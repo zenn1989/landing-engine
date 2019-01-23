@@ -35,4 +35,11 @@ body {
         margin-top: 70px;
         min-height: 300px;
     }
+
+    label.control-label {
+        padding-top: 7px;
+        text-align: right;
+        font-weight: bolder;
+    }
+
 }

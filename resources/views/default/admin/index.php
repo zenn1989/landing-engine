@@ -4,11 +4,13 @@
 /** @var \App\Backcalls[]|\Illuminate\Support\Collection $records */
 /** @var array $pagination */
 
+use Ffcms\Core\Helper\Date;
+
 $this->layout('admin/_layouts/default', [
     'title' => 'Админ панель - главная'
 ]);
 
-use Ffcms\Core\Helper\Date; ?>
+?>
 
 <?php $this->start('body') ?>
 <h1>Добро пожаловать!</h1>
