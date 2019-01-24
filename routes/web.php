@@ -41,8 +41,7 @@ $router->group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'au
     $app->get('/close/{id}', ['uses' => 'MainController@close']);
     $app->get('/settings', ['uses' => 'MainController@settingsShow']);
     $app->post('/settings', ['uses' => 'MainController@settingsSave']);
+    $app->get('/pages', ['uses' => 'MainController@pageList']);
 
-    $app->get('/lol/test/kek/', function(){
-        return ['test'];
-    });
+    $app->get('/page/update[/{id}]', ['uses' => 'MainController@pageUpdate']);
 });

@@ -6,13 +6,14 @@ namespace App\Http\Controllers\Admin;
 use App\Backcalls;
 use App\Http\Controllers\Controller;
 use App\Model\FormAdminSettings;
+use App\Model\FormPageUpdate;
+use App\Page;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
 /**
  * Class MainController
  * @package App\Http\Controllers\Admin
- * @author https://github.com/ajaxorg/ace
  */
 class MainController extends Controller
 {
@@ -59,6 +60,42 @@ class MainController extends Controller
         }
 
         return redirect('/admin');
+    }
+
+    /**
+     * @param Request $request
+     * @return string
+     * @throws \Throwable
+     */
+    public function pageList(Request $request)
+    {
+        $page = (int)$request->query->get('page', 0);
+        $offset = $page * static::ITEM_PER_PAGE;
+
+        $records = Page::orderBy('id', 'DESC')
+            ->take(static::ITEM_PER_PAGE)
+            ->skip($offset)
+            ->get();
+
+        return view()->render('admin/page_list', [
+            'records' => $records,
+            'pagination' => [
+                'page' => $page,
+                'total' => Page::count(),
+                'step' => static::ITEM_PER_PAGE
+            ]
+        ]);
+    }
+
+    public function pageUpdate(Request $request, $id = null)
+    {
+        $record = Page::findOrNew($id);
+        $model = new FormPageUpdate($record);
+
+        return view()->render('admin/page_update', [
+            'record' => $record,
+            'model' => $model
+        ]);
     }
 
     /**
