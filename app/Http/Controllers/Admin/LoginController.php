@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Model\FormAdminLogin;
 use App\User;
 use Illuminate\Http\Request;
+use ReCaptcha\ReCaptcha;
 
 /**
  * Class LoginController. Admin auth controller
@@ -29,7 +30,8 @@ class LoginController extends Controller
         $model = new FormAdminLogin();
 
         return view()->render('admin/login', [
-            'model' => $model
+            'model' => $model,
+            'fail' => (bool)$request->query->get('fail', false)
         ]);
     }
 
@@ -44,9 +46,13 @@ class LoginController extends Controller
 
         $login = $request->input($model->getFormName() . '.email', null);
         $pwd = $request->input($model->getFormName() . '.password', null);
+        $captchaValue = $request->input('g-recaptcha-response', null);
 
-        if (!$login || !$pwd || !is_string($login) || !is_string($pwd) || strlen($login) < 2 || strlen($pwd) < 5) {
-            return redirect()->route('login');
+        $captcha = new ReCaptcha(env('APP_RECATCHA_SECRET'));
+        $resp = $captcha->verify($captchaValue);
+
+        if (!$login || !$pwd || !is_string($login) || !is_string($pwd) || strlen($login) < 2 || strlen($pwd) < 5 || !$captcha || !$resp->isSuccess()) {
+            return redirect('/admin/login?fail=true');
         }
 
         // try to find user in db
