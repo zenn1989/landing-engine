@@ -66,5 +66,7 @@
 <script src="<?= url('/') ?>/assets/npm/node_modules/jquery/dist/jquery.min.js"></script>
 <script src="<?= url('/') ?>/assets/npm/node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
 
+<?= $this->section('javascript') ?>
+
 </body>
 </html>

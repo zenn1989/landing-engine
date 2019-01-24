@@ -43,7 +43,11 @@ class FormPageUpdate extends Model
     public function labels(): array
     {
         return [
-
+            'route' => 'Маршрут',
+            'tpl' => 'Шаблон',
+            'seoTitle' => 'Meta заголовок',
+            'seoDesc' => 'Meta описание',
+            'seoKeywords' => 'Meta ключ.слова'
         ];
     }
 }

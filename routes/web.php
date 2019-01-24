@@ -43,5 +43,6 @@ $router->group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'au
     $app->post('/settings', ['uses' => 'MainController@settingsSave']);
     $app->get('/pages', ['uses' => 'MainController@pageList']);
 
-    $app->get('/page/update[/{id}]', ['uses' => 'MainController@pageUpdate']);
+    $app->get('/page/update[/{id}]', ['uses' => 'MainController@pageUpdateShow']);
+    $app->post('/page/update[/{id}]', ['uses' => 'MainController@pageUpdateSend']);
 });

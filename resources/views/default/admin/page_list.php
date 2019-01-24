@@ -41,9 +41,9 @@ $records->each(function($row) use ($table) {
         ['text' => $row->id],
         ['text' => '<span class="badge badge-success">' . $row->route . '</span>', 'html' => true],
         ['text' => \Ffcms\Core\Helper\Text::snippet(strip_tags($row->text), 50)],
-        ['text' => $row->seo_title],
-        ['text' => Date::convertToDatetime($row->created_at, Date::FORMAT_TO_DAY)],
-        ['text' => $actions->display(), 'html' => true]
+        //['text' => ''],
+        //['text' => Date::convertToDatetime($row->created_at, Date::FORMAT_TO_DAY)],
+        //['text' => $actions->display(), 'html' => true]
     ]);
 });
 

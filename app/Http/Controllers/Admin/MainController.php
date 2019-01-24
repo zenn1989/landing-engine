@@ -87,15 +87,61 @@ class MainController extends Controller
         ]);
     }
 
-    public function pageUpdate(Request $request, $id = null)
+    /**
+     * @param Request $request
+     * @param null $id
+     * @return string
+     * @throws \Throwable
+     */
+    public function pageUpdateShow(Request $request, $id = null)
     {
         $record = Page::findOrNew($id);
         $model = new FormPageUpdate($record);
 
+        $updated = (bool)$request->query->get('success', false);
+
         return view()->render('admin/page_update', [
             'record' => $record,
-            'model' => $model
+            'model' => $model,
+            'updated' => $updated
         ]);
+    }
+
+    /**
+     * @param Request $request
+     * @param null $id
+     * @return \Illuminate\Http\RedirectResponse|\Laravel\Lumen\Http\Redirector
+     */
+    public function pageUpdateSend(Request $request, $id = null)
+    {
+        /** @var Page $record */
+        $record = Page::findOrNew($id);
+        $model = new FormPageUpdate($record);
+
+        $text = (string)$request->input($model->getFormName() . '.text');
+        $route = (string)$request->input($model->getFormName() . '.route');
+        $tpl = (string)$request->input($model->getFormName() . '.tpl');
+
+        $seoTitle = (string)$request->input($model->getFormName() . '.seoTitle');
+        $seoDesc = (string)$request->input($model->getFormName() . '.seoDesc');
+        $seoKeywords = (string)$request->input($model->getFormName() . '.seoKeywords');
+
+        if (!$route || !starts_with($route, '/') || (Page::where('route', $route)->count() > 0 && (int)$record->id < 1)) {
+            return redirect('/admin/page/update/' . $record->id . '?fail=true');
+        }
+
+        $record->route = $route;
+        $record->tpl = $tpl;
+        $record->text = $text;
+        $record->seo_title = $seoTitle;
+        $record->seo_keywords = $seoKeywords;
+        $record->seo_description = $seoDesc;
+        //$record->created_at = time();
+        //$record->updated_at = time();
+
+        $record->save();
+
+        return redirect('/admin/page/update/' . $record->id . '?success=true');
     }
 
     /**
