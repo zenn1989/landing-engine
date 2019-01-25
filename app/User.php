@@ -13,6 +13,7 @@ use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
  * @package App
  * @property int $id
  * @property string $email
+ * @property string $name
  * @property string $password
  * @property bool $is_admin
  */

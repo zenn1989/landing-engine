@@ -1,22 +1,22 @@
 <?php
 
 /** @var \Ffcms\Templex\Template\Template $this */
-/** @var \Illuminate\Support\Collection|\App\Page[] $records */
+/** @var \Illuminate\Support\Collection|\App\User[] $records */
 /** @var array $pagination */
 
 use Ffcms\Core\Helper\Text;
 
 $this->layout('admin/_layouts/default', [
-    'title' => 'Страницы'
+    'title' => 'Пользователи'
 ])
 
 ?>
 
 <?php $this->start('body') ?>
-<h1>Список страниц сайта</h1>
+<h1>Список пользователей</h1>
 <div class="row">
     <div class="col">
-        <a href="<?= url('/admin/page/update') ?>" class="btn btn-primary">Добавить страницу</a>
+        <a href="<?= url('/admin/user/update') ?>" class="btn btn-primary">Добавить пользователя</a>
     </div>
 </div>
 
@@ -24,23 +24,21 @@ $this->layout('admin/_layouts/default', [
 $table = $this->table(['class' => 'table'])
     ->head([
         ['text' => '#'],
-        ['text' => 'Маршрут'],
-        ['text' => 'Сниппет'],
-        ['text' => 'Сео заголовок'],
+        ['text' => 'Почта'],
+        ['text' => 'Имя'],
         ['text' => 'Действия']
     ]);
 
 $records->each(function($row) use ($table) {
-    /** @var \App\Page $row */
+    /** @var \App\User $row */
     $actions = $this->bootstrap()->btngroup(['class' => 'btn-group btn-group-sm'])
-        ->add('<i class="fas fa-pencil-alt"></i>', [url('admin/page/update/' . $row->id)], ['class' => 'btn btn-primary', 'html' => true])
-        ->add('<i class="far fa-trash-alt"></i>', [url('admin/page/delete/' . $row->id)], ['class' => 'btn btn-danger', 'html' => true]);
+        ->add('<i class="fas fa-pencil-alt"></i>', [url('admin/user/update/' . $row->id)], ['class' => 'btn btn-primary', 'html' => true])
+        ->add('<i class="far fa-trash-alt"></i>', [url('admin/user/delete/' . $row->id)], ['class' => 'btn btn-danger', 'html' => true]);
 
     $table->row([
         ['text' => $row->id],
-        ['text' => '<span class="badge badge-success">' . $row->route . '</span>', 'html' => true],
-        ['text' => Text::snippet(strip_tags($row->text), 50)],
-        ['text' => $this->e($row->seo_title)],
+        ['text' => $row->email],
+        ['text' => $row->name],
         ['text' => $actions->display(), 'html' => true]
     ]);
 });

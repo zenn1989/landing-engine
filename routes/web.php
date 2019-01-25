@@ -41,8 +41,12 @@ $router->group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'au
     $app->get('/close/{id}', ['uses' => 'MainController@close']);
     $app->get('/settings', ['uses' => 'MainController@settingsShow']);
     $app->post('/settings', ['uses' => 'MainController@settingsSave']);
-    $app->get('/pages', ['uses' => 'MainController@pageList']);
 
-    $app->get('/page/update[/{id}]', ['uses' => 'MainController@pageUpdateShow']);
-    $app->post('/page/update[/{id}]', ['uses' => 'MainController@pageUpdateSend']);
+    $app->get('/pages', ['uses' => 'PageController@pageList']);
+    $app->get('/page/update[/{id}]', ['uses' => 'PageController@pageUpdateShow']);
+    $app->post('/page/update[/{id}]', ['uses' => 'PageController@pageUpdateSend']);
+    $app->get('/page/delete/{id}', ['uses' => 'PageController@pageDeleteShow']);
+    $app->post('/page/delete/{id}', ['uses' => 'PageController@pageDeleteSend']);
+
+    $app->get('/users', ['uses' => 'UserController@userList']);
 });

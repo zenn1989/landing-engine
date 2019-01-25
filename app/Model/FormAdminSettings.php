@@ -3,6 +3,7 @@
 namespace App\Model;
 
 
+use Ffcms\Core\Helper\Type\Str;
 use Ffcms\Templex\Helper\Html\Form\Model;
 
 /**
@@ -63,5 +64,19 @@ class FormAdminSettings extends Model
             'seoOpDesc' => 'Meta description',
             'seoOpKeywords' => 'Meta keywords'
         ];
+    }
+
+    /**
+     * Get template directories
+     * @return array
+     */
+    public function getTemplates()
+    {
+        $result = [];
+        foreach (glob(base_path('resources/views/*'), GLOB_ONLYDIR) as $dir) {
+            $result[] = Str::lastIn($dir, '/', true);
+        }
+
+        return $result;
     }
 }

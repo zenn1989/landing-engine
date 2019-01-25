@@ -23,7 +23,7 @@ $this->layout('admin/_layouts/default', [
 <?= $form->start(false) ?>
 
 <?= $form->fieldset()->text('route', null, 'Адрес корневого URI, который будет занимать страница на сайте') ?>
-<?= $form->fieldset()->select('tpl', ['options' => ['front/multiple/page'], 'optionsKey' => false], 'Шаблон для страницы') ?>
+<?= $form->fieldset()->select('tpl', ['options' => $model->getTemplates(), 'optionsKey' => false], 'Шаблон для страницы') ?>
 
 
 <strong>Код страницы</strong>

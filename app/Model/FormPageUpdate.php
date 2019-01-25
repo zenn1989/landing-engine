@@ -32,6 +32,9 @@ class FormPageUpdate extends Model
 
         $this->route = $page->route;
         $this->text = $page->text;
+        $this->seoTitle = $page->seo_title;
+        $this->seoDesc = $page->seo_description;
+        $this->seoKeywords = $page->seo_keywords;
 
         parent::__construct();
     }
@@ -49,5 +52,22 @@ class FormPageUpdate extends Model
             'seoDesc' => 'Meta описание',
             'seoKeywords' => 'Meta ключ.слова'
         ];
+    }
+
+    /**
+     * Get template path
+     * @return array
+     */
+    public function getTemplates()
+    {
+        $result = [];
+        $tplDir = base_path('resources/views/' . env('APP_TEMPLATE'));
+
+        foreach (glob($tplDir . '/front/multiple/' . '*.php') as $file) {
+            $result[] = substr($file, strlen($tplDir)+1, -4);
+        }
+
+
+        return $result;
     }
 }
