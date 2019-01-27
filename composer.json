@@ -9,6 +9,7 @@
         "laravel/lumen-framework": "5.7.*",
         "vlucas/phpdotenv": "~2.2",
         "illuminate/session": "5.7.*",
+        "illuminate/mail": "5.7.*",
         "google/recaptcha": "^1.2@stable",
         "phpffcms/ffcms-templex": "@dev",
         "phpffcms/ffcms-core": "@dev"
@@ -43,5 +44,5 @@
         "optimize-autoloader": true
     },
     "minimum-stability": "dev",
-    "prefer-stable": false
+    "prefer-stable": true
 }

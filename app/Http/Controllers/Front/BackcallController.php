@@ -7,8 +7,12 @@ use App\Backcalls;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use ReCaptcha\ReCaptcha;
+use Illuminate\Support\Facades\Mail;
 
-
+/**
+ * Class BackcallController
+ * @package App\Http\Controllers\Front
+ */
 class BackcallController extends Controller
 {
     /**
@@ -51,6 +55,15 @@ class BackcallController extends Controller
         $query->phone = $phone;
         $query->created_at = time();
         $query->save();
+
+        $message = 'Новый запрос обратной связи от: ' . $query->phone . ' (' . $query->name . ')';
+
+        // send notify email
+        Mail::raw($message, function($m) {
+            $m->from(env('MAIL_FROM_ADDRESS'))
+                ->to(env('MAIL_BACKCALLS_NOTIFY_EMAIL'))
+                ->subject('Новый запрос звонка');
+        });
 
         return [
             'status' => 1,

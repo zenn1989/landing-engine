@@ -97,6 +97,12 @@ $app->register(App\Providers\AppServiceProvider::class);
 $app->configure('session');
 $app->register(Illuminate\Session\SessionServiceProvider::class);
 
+$app->configure('mail');
+$app->register(Illuminate\Mail\MailServiceProvider::class);
+$app->alias('mailer', Illuminate\Mail\Mailer::class);
+$app->alias('mailer', Illuminate\Contracts\Mail\Mailer::class);
+$app->alias('mailer', Illuminate\Contracts\Mail\MailQueue::class);
+
 /*
 |--------------------------------------------------------------------------
 | Override native lumen functions
