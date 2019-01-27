@@ -49,4 +49,8 @@ $router->group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'au
     $app->post('/page/delete/{id}', ['uses' => 'PageController@pageDeleteSend']);
 
     $app->get('/users', ['uses' => 'UserController@userList']);
+    $app->get('/user/update[/{id}]', ['uses' => 'UserController@userUpdateShow']);
+    $app->post('/user/update[/{id}]', ['uses' => 'UserController@userUpdateSend']);
+    $app->get('/user/delete/{id}', ['uses' => 'UserController@userDeleteShow']);
+    $app->post('/user/delete/{id}', ['uses' => 'UserController@userDeleteSend']);
 });
